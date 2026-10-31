@@ -8,12 +8,21 @@ export default function About() {
   return (
     <section id="about" className="section">
       <div className="about">
-        <div>
-          <h2 className="about__heading">{about.heading}</h2>
-          <p className="about__lead">{about.lead}</p>
+        <div className="about__portrait-wrap">
+          <figure className="about__portrait">
+            <img src="/images/profile-portrait.png" alt="Arianne Evasco" />
+          </figure>
+          <figcaption className="about__portrait-caption">
+            <strong>Arianne Evasco</strong>
+          </figcaption>
+          <span className="about__portrait-note">curious by nature · builder by choice</span>
         </div>
 
-        <div>
+        <div className="about__content">
+          <p className="section__eyebrow">A little about me</p>
+          <h2 className="about__heading">{about.heading}</h2>
+          <p className="about__lead">{about.lead}</p>
+
           {about.body.map((text) => (
             <p key={text} className="about__text">{text}</p>
           ))}

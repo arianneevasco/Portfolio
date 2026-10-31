@@ -1,5 +1,37 @@
 import Marquee from "./Marquee";
 import { skills } from "../data/content";
+import { Code2 } from "lucide-react";
+
+const skillLogos = {
+  React: "/images/tech-react.svg",
+  HTML: "/images/tech-HTML.svg",
+  CSS: "/images/tech-CSS.svg",
+  JavaScript: "/images/tech-JavaScript.svg",
+  Bootstrap: "/images/tech-Bootstrap.svg",
+  Figma: "/images/tech-Figma.svg",
+  "Node.js": "/images/tech-Nodejs.svg",
+  Express: "/images/tech-Express.svg",
+  Java: "/images/tech-Java.svg",
+  Django: "/images/tech-Django.svg",
+  PostgreSQL: "/images/tech-PostgreSQL.svg",
+  Supabase: "/images/tech-Supabase.svg",
+  Python: "/images/tech-Python.svg",
+  R: "/images/tech-R.svg",
+  Jupyter: "/images/tech-Jupyter.svg",
+  NumPy: "/images/tech-NumPy.svg",
+  Matplotlib: "/images/tech-Matplotlib.svg",
+  MongoDB: "/images/tech-MongoDB.svg",
+  Git: "/images/tech-Git.svg",
+  Vercel: "/images/tech-Vercel.svg",
+  "VS Code": "/images/tech-VSCode.svg",
+};
+
+function SkillItem({ name }) {
+  const logo = skillLogos[name];
+  return logo
+    ? <><img className="skill-icon" src={logo} alt="" aria-hidden="true" />{name}</>
+    : <><Code2 className="skill-icon" size={15} aria-hidden="true" />{name}</>;
+}
 
 export default function Skills() {
   // Split the tools into two rows
@@ -20,7 +52,7 @@ export default function Skills() {
           <p className="skills__label">Currently learning:</p>
           <ul className="pills">
             {skills.learning.map((s) => (
-              <li key={s}>{s}</li>
+              <li key={s}><SkillItem name={s} /></li>
             ))}
           </ul>
 
@@ -38,7 +70,7 @@ export default function Skills() {
               <h3>{g.title}</h3>
               <ul className="sgroup__box">
                 {g.items.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}><SkillItem name={item} /></li>
                 ))}
               </ul>
             </div>
