@@ -70,10 +70,7 @@ export const experiences = [
     period: "2026",
     summary:
       "Handled and organized student records, keeping the data accurate and confidential. Supported enrollment and records processing, including encoding and verifying student data.",
-    image: null,
-    certificates: [
-      { title: "Certificate of Internship", issuer: "University Registrar, SorSU 2026", image: null },
-    ],
+    image: "/images/intern.jfif",
   },
   {
     id: "exp2",
@@ -83,10 +80,7 @@ export const experiences = [
     period: "2025",
     summary:
       "Placed 1st runner up at the programming challenge held at Sorsogon State University, Bulan Campus, under the theme: Journey Through Code: Unlocking the Fun in Tech.",
-    image: null,
-    certificates: [
-      { title: "Add your certificate", issuer: "CICTCon 2025", image: null },
-    ],
+    image: "/images/competition.jfif",
   },
   {
     id: "exp3",
@@ -95,15 +89,60 @@ export const experiences = [
     company: "Test of Practical Competency in ICT",
     period: "Add year",
     summary: "Took the Test of Practical Competency in ICT, an exam that measures practical IT skills.",
-    image: null,
-    certificates: [
-      { title: "Add your certificate", issuer: "TOPCIT", image: null },
-    ],
+    image: "/images/topcit.jfif",
   },
 ];
 
 export const projects = [
-  { type: "Full-stack role", title: "Sulit Spot", summary: "One line on the problem it solves and what you built.", stack: ["React", "Node.js"], image: null, caseStudy: "#", code: null, note: null },
-  { type: "Full-stack role", title: "Project two", summary: "One line on the problem it solves and what you built.", stack: ["React", "Node.js"], image: null, caseStudy: "#", code: null, note: null },
-  { type: "Full-stack role", title: "Project three", summary: "One line on the problem it solves and what you built.", stack: ["Python"], image: null, caseStudy: "#", code: null, note: null },
+  {
+    type: "Backend role",
+    title: "SorSULYAP",
+    summary: "A secure, centralized university announcement system with class schedules, an activities calendar, searchable updates, downloadable attachments, and offline access for the SorSU community.",
+    stack: ["Figma", "Database", "Email authentication", "Offline mode"],
+    image: "/project/Screenshot%202026-10-31%20234217.png",
+    caseStudy: null,
+    code: null,
+    note: null,
+  },
+  {
+    type: "Frontend role",
+    title: "Schedify",
+    summary: "A mobile academic scheduling and notification system for SorSU students, with personalized class schedules, school events, administrator announcements, and automated reminders.",
+    stack: ["React Native", "Node.js", "Express", "MongoDB Atlas", "Push notifications"],
+    image: "/project/58315de5-b009-4ec2-9911-bb2839809630.jpg",
+    caseStudy: null,
+    code: null,
+    note: null,
+  },
+  {
+    type: "Full-stack role",
+    title: "Sulit Spot",
+    summary: "A community-driven mobile app for discovering and sharing affordable food, places, items, and services through posts, ratings, reviews, location pins, notifications, and AI-assisted categories.",
+    stack: ["React Native", "Expo", "Firebase", "Firestore", "Cloud Functions", "Cloudinary", "Groq API"],
+    image: "/project/Screenshot%202026-10-31%20224453.png",
+    caseStudy: null,
+    code: null,
+    note: null,
+  },
+];
+
+// Put the files in public/images/certs/ (lowercase names, no spaces)
+export const certificates = [
+  {
+    title: "Certificate of Internship",
+    issuer: "University Registrar, SorSU",
+    year: "2026",
+    image: "/images/4db53200-12ac-465f-a87e-6a219307d5b4.jfif",
+  },
+  {
+    title: "1st Runner Up, Programming Challenge",
+    issuer: "CICTCon 2025, SorSU",
+    year: "2025",
+    image: "/images/499748eb-346b-4859-b313-2f04e68e6cfd.jpg",
+  },
+  { title: "AI Essentials: Theory and Practice", issuer: "UP Open University", year: "2026", image: "/images/Screenshot%202026-10-31%20222842.png" },
+  { title: "Data Analyst 101: Excel Formulas & Functions", issuer: "Simplilearn SkillUp", year: "2025", image: "/images/Screenshot%202026-10-31%20222938.png" },
+  { title: "Introduction to C++", issuer: "Simplilearn SkillUp", year: "2024", image: "/images/Screenshot%202026-10-31%20223016.png" },
+  { title: "Introduction to CSS", issuer: "Sololearn", year: "2025", image: "/images/Screenshot%202026-10-31%20223101.png" },
+  { title: "Introduction to HTML", issuer: "Sololearn", year: "2025", image: "/images/Screenshot%202026-10-31%20223140.png" },
 ];

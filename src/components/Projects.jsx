@@ -27,7 +27,12 @@ export default function Projects() {
             >
               <div className="project__shot">
                 {p.image ? (
-                  <img src={p.image} alt={`${p.title} screenshot`} loading="lazy" />
+                  <img
+                    src={p.image}
+                    alt={`${p.title} screenshot`}
+                    className={p.title === "Schedify" ? "project__image--schedify" : undefined}
+                    loading="lazy"
+                  />
                 ) : (
                   <span className="project__dot" />
                 )}
@@ -45,9 +50,11 @@ export default function Projects() {
                 </ul>
 
                 <div className="project__links">
-                  <a className="btn btn--solid" href={p.caseStudy} tabIndex={n === i ? 0 : -1}>
-                    <FileText size={16} /> Case study
-                  </a>
+                  {p.caseStudy && (
+                    <a className="btn btn--solid" href={p.caseStudy} tabIndex={n === i ? 0 : -1}>
+                      <FileText size={16} /> Case study
+                    </a>
+                  )}
                   {p.code && (
                     <a className="btn btn--ghost" href={p.code} tabIndex={n === i ? 0 : -1}>
                       <Code2 size={16} /> Code
