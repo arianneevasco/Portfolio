@@ -13,6 +13,7 @@ export const profile = {
     { label: "GitHub", href: "https://github.com/yourname" },
     { label: "LinkedIn", href: "https://linkedin.com/in/yourname" },
   ],
+  formEndpoint: "https://formspree.io/f/your-id-here",
 };
 
 // The small "profile.js" card in the hero
