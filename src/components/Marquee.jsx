@@ -1,10 +1,15 @@
 import { techs } from "../data/content";
 
-export default function Marquee() {
-  const row = [...techs, ...techs]; // doubled so the loop has no gap
+export default function Marquee({ items = techs, reverse = false, variant = "" }) {
+  // 4 copies, so the strip is wide enough even on big screens
+  const row = Array(4).fill(items).flat();
+
+  const classes = ["marquee", variant && `marquee--${variant}`, reverse && "marquee--reverse"]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div className="marquee" aria-hidden="true">
+    <div className={classes} aria-hidden="true">
       <ul className="marquee__track">
         {row.map((t, i) => (
           <li key={i}>{t}</li>

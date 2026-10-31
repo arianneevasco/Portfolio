@@ -43,13 +43,22 @@ export const about = {
   ],
 };
 
-export const skills = [
-  { group: "Frontend & Design", note: "What people see and touch", items: ["React", "HTML", "CSS", "JavaScript", "Bootstrap", "Figma"] },
-  { group: "Backend", note: "What keeps it running", items: ["Node.js", "Express", "Java"] },
-  { group: "Data science", note: "Making sense of data", items: ["Python", "R", "Jupyter", "NumPy", "Matplotlib"] },
-  { group: "Currently learning", note: "On my desk right now", items: ["Django", "PostgreSQL", "Supabase"] },
-  { group: "Beyond code", note: "How I work", items: ["Working in a team", "Presenting projects", "Debugging", "Learning on my own"] },
-];
+export const skills = {
+  heading: "The stack",
+  accent: "so far.",
+  lead: "I design, build and deploy web and mobile apps.",
+  learning: ["Django", "PostgreSQL", "Supabase"],
+  beyond: ["Working in a team", "Presenting projects", "Debugging", "Learning on my own"],
+  groups: [
+    { title: "Frontend & design", items: ["React", "HTML", "CSS", "JavaScript", "Bootstrap", "Figma"] },
+    { title: "Backend", items: ["Node.js", "Express", "Java"] },
+    { title: "Data science", items: ["Python", "R", "Jupyter", "NumPy", "Matplotlib"] },
+  ],
+  tools: [
+    "Python", "React", "Node.js", "Java", "JavaScript", "CSS", "HTML", "Bootstrap",
+    "Figma", "Vercel", "VS Code", "MongoDB", "PostgreSQL", "Git",
+  ],
+};
 
 // image: put files in public/images and write "/images/file.jpg". null shows a placeholder.
 export const experiences = [
