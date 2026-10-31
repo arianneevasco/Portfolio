@@ -1,3 +1,10 @@
+import Background from "./components/Background";
+
 export default function App() {
-  return <h1>Hello portfolio</h1>;
+  return (
+    <>
+      <Background />
+      <h1>Hello portfolio</h1>
+    </>
+  );
 }
