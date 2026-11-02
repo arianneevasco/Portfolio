@@ -57,7 +57,9 @@ export default function Skills() {
 
       const grouped = data.reduce((result, skill) => {
         if (!result[skill.category]) result[skill.category] = [];
-        result[skill.category].push(skill.name);
+        if (!result[skill.category].includes(skill.name)) {
+          result[skill.category].push(skill.name);
+        }
         return result;
       }, {});
 

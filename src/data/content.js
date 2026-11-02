@@ -141,6 +141,12 @@ export const certificates = [
     image: "/images/4db53200-12ac-465f-a87e-6a219307d5b4.jfif",
   },
   {
+    title: "Certificate of Participation — CICTCon 2024",
+    issuer: "Sorsogon State University Bulan Campus",
+    year: "2024",
+    image: "/images/cictcon-2024-participation.jpg",
+  },
+  {
     title: "1st Runner Up, Programming Challenge",
     issuer: "CICTCon 2025, SorSU",
     year: "2025",
@@ -153,9 +159,3 @@ export const certificates = [
   { title: "Introduction to HTML", issuer: "Sololearn", year: "2025", image: "/images/Screenshot%202026-10-31%20223140.png" },
 ];
 
-export const awards = [
-  { title: "1st Runner-Up — SorSU Programming Challenge", issuer: "CICTCon 2025, Sorsogon State University", year: "2025" },
-  { title: "President's Lister — 3rd Year", issuer: "Sorsogon State University", year: "2025" },
-  { title: "President's Lister — 2nd Year", issuer: "Sorsogon State University", year: "2024" },
-  { title: "Dean's Lister — 1st Year, 1st Semester", issuer: "Sorsogon State University", year: "2023" },
-];
