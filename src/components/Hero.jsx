@@ -48,8 +48,6 @@ export default function Hero() {
           transition={{ delay: 0.9, duration: 0.8 }}
         >
           <a className="btn btn--solid" href="#projects">View projects</a>
-          <a className="btn btn--ghost" href="#contact">Hire me</a>
-          <a className="btn btn--ghost" href={`mailto:${profile.email}`}>Email me</a>
         </motion.div>
       </div>
 
