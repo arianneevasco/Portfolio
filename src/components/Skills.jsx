@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import Marquee from "./Marquee";
-import { skills } from "../data/content";
+import { skills as localSkills } from "../data/content";
 import { Code2 } from "lucide-react";
+import { supabase } from "../lib/supabaseClient";
 
 const skillLogos = {
   React: "/images/tech-react.svg",
@@ -34,6 +36,47 @@ function SkillItem({ name }) {
 }
 
 export default function Skills() {
+  const [skills, setSkills] = useState(localSkills);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadSkills() {
+      const { data, error } = await supabase
+        .from("skills")
+        .select("*")
+        .eq("published", true)
+        .order("sort_order", { ascending: true });
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Could not load skills from Supabase:", error);
+        return;
+      }
+
+      const grouped = data.reduce((result, skill) => {
+        if (!result[skill.category]) result[skill.category] = [];
+        result[skill.category].push(skill.name);
+        return result;
+      }, {});
+
+      setSkills({
+        ...localSkills,
+        learning: grouped.learning || localSkills.learning,
+        beyond: grouped.beyond || localSkills.beyond,
+        tools: grouped.tools || localSkills.tools,
+        groups: localSkills.groups.map((group) => ({
+          ...group,
+          items: grouped[group.title] || group.items,
+        })),
+      });
+    }
+
+    loadSkills();
+    return () => { active = false; };
+  }, []);
+
   // Split the tools into two rows
   const half = Math.ceil(skills.tools.length / 2);
   const rowA = skills.tools.slice(0, half);

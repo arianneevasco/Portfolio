@@ -8,47 +8,47 @@ export const profile = {
     "Fourth-year Computer Science student building full-stack apps with React and Node.js, and exploring data science and AI with Python. I learn by shipping real projects.",
   email: "arianneevasco@gmail.com",
   location: "Irosin, Sorsogon, Philippines. Open to remote",
-  cv: "#", // later: "/arianne-evasco-cv.pdf" (put the PDF in /public)
+  cv: "/arianne-evasco-cv.pdf",
   links: [
-    { label: "GitHub", href: "https://github.com/yourname" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yourname" },
+    { label: "GitHub", href: "https://github.com/arianneevasco" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/arianne-evasco" },
   ],
   formEndpoint: "https://formspree.io/f/your-id-here",
 };
 
 // The small "profile.js" card in the hero
 export const codeCard = {
-  role: "Software Developer",
-  stack: ["React", "Node.js", "Python"],
-  focus: "Full-stack, data and AI",
-  learning: "Shipping reliable software end to end",
-  status: "open to work",
+  role: "Computer Science Student",
+  stack: ["Web development", "Data management", "IT fundamentals"],
+  focus: "Learning and problem-solving",
+  learning: "Growing through projects and experience",
+  status: "open to opportunities",
 };
 
 // The scrolling strip under the hero
 export const techs = ["React", "Node.js", "Python", "JavaScript", "Java", "Figma"];
 
 export const about = {
-  heading: "I learn by building, and I'm not done yet.",
+  heading: "I learn, grow, and keep moving forward.",
   lead: "I'm Arianne, a fourth-year Computer Science student at Sorsogon State University, Bulan Campus.",
   body: [
-    "I started with React and Node.js because I wanted to build things people could actually click on and use. These days I'm spending more time on the other side of the screen: databases, backend logic, and Python for data science and AI.",
-    "I enjoy building things and solving problems, especially the kind that take a few tries to get right. That's what keeps me learning.",
+    "I'm a curious and determined person who enjoys learning new things, solving problems, and turning challenges into opportunities to improve.",
+    "I value patience, teamwork, and continuous learning. Whether I'm working on a school project, organizing information, or preparing for a competition, I try to be responsible, detail-oriented, and open to feedback. I'm eager to learn, contribute, and grow with a team.",
   ],
   facts: [
     "Sorsogon State University",
     "Irosin, Sorsogon",
-    "Backend, frontend, data science and ethical vibe coding",
-    "Freelance and projects",
+    "Curious and determined learner",
+    "Completed university internship",
   ],
 };
 
 export const skills = {
-  heading: "The stack",
+  heading: "What I bring",
   accent: "so far.",
-  lead: "I design, build and deploy web and mobile apps.",
-  learning: ["Django", "PostgreSQL", "Supabase"],
-  beyond: ["Working in a team", "Presenting projects", "Debugging", "Learning on my own"],
+  lead: "I'm building a practical foundation in software and information technology through school projects, internship experience, and continuous learning.",
+  learning: ["Web Development", "Database Fundamentals", "Software Development", "Information Technology"],
+  beyond: ["Teamwork", "Communication", "Problem-Solving", "Organization", "Attention to Detail", "Presentation Skills", "Willingness to Learn"],
   groups: [
     { title: "Frontend & design", items: ["React", "HTML", "CSS", "JavaScript", "Bootstrap", "Figma"] },
     { title: "Backend", items: ["Node.js", "Express", "Java"] },
@@ -87,7 +87,7 @@ export const experiences = [
     kind: "Exam",
     role: "TOPCIT",
     company: "Test of Practical Competency in ICT",
-    period: "Add year",
+    period: "2025",
     summary: "Took the Test of Practical Competency in ICT, an exam that measures practical IT skills.",
     image: "/images/topcit.jfif",
   },
@@ -129,6 +129,12 @@ export const projects = [
 // Put the files in public/images/certs/ (lowercase names, no spaces)
 export const certificates = [
   {
+    title: "Test of Practical Competency in ICT (TOPCIT)",
+    issuer: "TOPCIT",
+    year: "2025",
+    image: "/certificates/topcit-score-certificate.pdf",
+  },
+  {
     title: "Certificate of Internship",
     issuer: "University Registrar, SorSU",
     year: "2026",
@@ -145,4 +151,11 @@ export const certificates = [
   { title: "Introduction to C++", issuer: "Simplilearn SkillUp", year: "2024", image: "/images/Screenshot%202026-10-31%20223016.png" },
   { title: "Introduction to CSS", issuer: "Sololearn", year: "2025", image: "/images/Screenshot%202026-10-31%20223101.png" },
   { title: "Introduction to HTML", issuer: "Sololearn", year: "2025", image: "/images/Screenshot%202026-10-31%20223140.png" },
+];
+
+export const awards = [
+  { title: "1st Runner-Up — SorSU Programming Challenge", issuer: "CICTCon 2025, Sorsogon State University", year: "2025" },
+  { title: "President's Lister — 3rd Year", issuer: "Sorsogon State University", year: "2025" },
+  { title: "President's Lister — 2nd Year", issuer: "Sorsogon State University", year: "2024" },
+  { title: "Dean's Lister — 1st Year, 1st Semester", issuer: "Sorsogon State University", year: "2023" },
 ];

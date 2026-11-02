@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, MapPin, FileText, Send } from "lucide-react";
 import { profile } from "../data/content";
+import { supabase } from "../lib/supabaseClient";
 
 export default function Contact() {
   // "idle" | "sending" | "sent" | "error"
@@ -11,16 +12,18 @@ export default function Contact() {
     setStatus("sending");
 
     try {
-      const res = await fetch(profile.formEndpoint, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(e.target), // collects every field with a name=""
+      const formData = new FormData(e.target);
+      const { error } = await supabase.from("contact_messages").insert({
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
       });
 
-      if (res.ok) {
+      if (!error) {
         setStatus("sent");
         e.target.reset();             // clear the form
       } else {
+        console.error("Could not send contact message:", error);
         setStatus("error");
       }
     } catch {

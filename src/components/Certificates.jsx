@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Carousel from "./Carousel";
-import { certificates } from "../data/content";
+import { certificates as localCertificates } from "../data/content";
+import { supabase } from "../lib/supabaseClient";
 
 const isPdf = (file) => file?.toLowerCase().endsWith(".pdf");
 
 export default function Certificates() {
   const [zoom, setZoom] = useState(null);
+  const [certificates, setCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && setZoom(null);
@@ -15,12 +18,44 @@ export default function Certificates() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    let active = true;
+
+    async function loadCertificates() {
+      const { data, error } = await supabase
+        .from("certificates")
+        .select("*")
+        .eq("published", true)
+        .order("sort_order", { ascending: true });
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Could not load certificates from Supabase:", error);
+        setCertificates(localCertificates);
+      } else {
+        setCertificates(data.map((certificate) => {
+          const localCertificate = localCertificates.find((item) => item.title === certificate.title);
+          return {
+            ...certificate,
+            image: certificate.image_url || localCertificate?.image,
+          };
+        }));
+      }
+
+      setLoading(false);
+    }
+
+    loadCertificates();
+    return () => { active = false; };
+  }, []);
+
   return (
     <div className="certs">
       <h3 className="certs__title">Certificates</h3>
       <p className="certs__sub">Proof of what I've learned and done.</p>
 
-      <Carousel label="Certificates">
+      {loading ? <p className="certs__sub">Loading certificates...</p> : <Carousel label="Certificates">
         {certificates.map((c) => (
           <figure key={c.title} className="cert">
             <button
@@ -44,7 +79,7 @@ export default function Certificates() {
             </figcaption>
           </figure>
         ))}
-      </Carousel>
+      </Carousel>}
 
       <AnimatePresence>
         {zoom && (

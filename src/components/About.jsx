@@ -1,10 +1,44 @@
+import { useEffect, useState } from "react";
 import { FileText, GraduationCap, MapPin, Code2, Briefcase } from "lucide-react";
-import { about, profile } from "../data/content";
+import { about as localAbout, profile } from "../data/content";
+import { supabase } from "../lib/supabaseClient";
 
 // One icon per fact, in the same order as about.facts in content.js
 const icons = [GraduationCap, MapPin, Code2, Briefcase];
 
 export default function About() {
+  const [about, setAbout] = useState(localAbout);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadAbout() {
+      const { data, error } = await supabase
+        .from("about_content")
+        .select("*")
+        .eq("published", true)
+        .order("id", { ascending: true })
+        .limit(1)
+        .maybeSingle();
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Could not load About content from Supabase:", error);
+      } else if (data) {
+        setAbout({
+          heading: data.heading || localAbout.heading,
+          lead: data.lead || localAbout.lead,
+          body: data.body?.length ? data.body : localAbout.body,
+          facts: data.facts?.length ? data.facts : localAbout.facts,
+        });
+      }
+    }
+
+    loadAbout();
+    return () => { active = false; };
+  }, []);
+
   return (
     <section id="about" className="section">
       <div className="about">

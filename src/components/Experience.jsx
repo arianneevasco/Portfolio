@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Certificates from "./Certificates";
-import { experiences } from "../data/content";
+import { experiences as localExperiences } from "../data/content";
+import { supabase } from "../lib/supabaseClient";
 
 function Img({ src, alt, className }) {
   return src ? (
@@ -14,6 +15,37 @@ function Img({ src, alt, className }) {
 
 export default function Experience() {
   const [open, setOpen] = useState(null);
+  const [experiences, setExperiences] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    async function loadExperiences() {
+      const { data, error } = await supabase
+        .from("experiences")
+        .select("*")
+        .eq("published", true)
+        .order("sort_order", { ascending: true });
+
+      if (!active) return;
+
+      if (error) {
+        console.error("Could not load experience from Supabase:", error);
+        setExperiences(localExperiences);
+      } else {
+        setExperiences(data.map((experience) => {
+          const localExperience = localExperiences.find((item) => item.role === experience.role);
+          return { ...experience, image: experience.image_url || localExperience?.image };
+        }));
+      }
+
+      setLoading(false);
+    }
+
+    loadExperiences();
+    return () => { active = false; };
+  }, []);
 
   return (
     <section id="experience" className="section">
@@ -22,7 +54,7 @@ export default function Experience() {
 
       <div className="exp-layout">
         <div className="exp">
-          {experiences.map((e) => {
+          {loading ? <p className="project-filters__empty">Loading experience...</p> : experiences.map((e) => {
             const isOpen = open === e.id;
 
             return (

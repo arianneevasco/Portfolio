@@ -9,7 +9,8 @@
   --muted: #a89fb8;
   --line: rgba(237, 237, 237, 0.1);
 
-  --serif: "Instrument Serif", Georgia, serif;
+  --serif: "Space Grotesk", system-ui, sans-serif;
+  --display: "Instrument Serif", Georgia, serif;
   --sans: "Hanken Grotesk", system-ui, sans-serif;
 }
 
@@ -86,7 +87,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero__title {
-  font: 400 clamp(2.8rem, 7vw, 6rem)/1.02 var(--serif);
+  font: 400 clamp(2.8rem, 7vw, 6rem)/1.02 var(--display);
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
@@ -387,6 +388,22 @@ html { scroll-padding-top: 80px; }   /* so the fixed navbar doesn't cover headin
 .section--wide .section__title,
 .section--wide .section__sub { padding-inline: clamp(1.25rem, 5vw, 4rem); }
 
+.awards__list { display: grid; gap: 0.75rem; margin-top: 2rem; }
+.award {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+}
+.award h3 { margin: 0; font-size: 1.05rem; }
+.award p { margin: 0.35rem 0 0; color: var(--muted); }
+.award time { color: var(--accent); white-space: nowrap; }
+.awards__empty { color: var(--muted); margin-top: 2rem; }
+
 .stage {
   --card-w: min(640px, 80vw);
   --gap: 2.5rem;
@@ -450,6 +467,27 @@ html { scroll-padding-top: 80px; }   /* so the fixed navbar doesn't cover headin
   transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s;
 }
 .stage__dots button.on { width: 34px; background: var(--lilac); }
+
+/* Project filters and details modal */
+.project-filters {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 0 clamp(1.25rem, 5vw, 4rem);
+}
+.project-filters__group { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.project-filters__label { margin-right: 0.25rem; color: var(--muted); font-size: 0.85rem; }
+.filter-btn, .filter-reset, .project-filters select {
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.8rem;
+  background: rgba(237, 237, 237, 0.05); color: var(--muted); font: inherit; font-size: 0.82rem; cursor: pointer;
+}
+.filter-btn:hover, .filter-btn.is-selected, .filter-reset:hover { color: var(--mist); border-color: var(--lilac); }
+.filter-btn.is-selected { background: rgba(185, 156, 240, 0.15); }
+.project-filters select { border-radius: 10px; }
+.project-filters select option { color: #1a1225; }
+.project-filters__empty { padding: 2rem clamp(1.25rem, 5vw, 4rem); color: var(--muted); }
+.chips li { padding: 0; overflow: hidden; }
+.chips li button { padding: 0.3rem 0.8rem; border: 0; background: none; color: inherit; font: inherit; font-size: inherit; cursor: pointer; }
+.chips li button:hover { color: var(--lilac); }
+.project__links .btn { border: 1px solid var(--line); cursor: pointer; font: inherit; }
 
 /* Contact */
 .contact { padding-bottom: 6rem; }
