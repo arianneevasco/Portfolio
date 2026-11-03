@@ -5,7 +5,7 @@ export const profile = {
   logo: "ae",
   headline: ["I turn ideas", "into working", "software"],
   intro:
-    "Fourth-year Computer Science student building full-stack apps with React and Node.js, and exploring data science and AI with Python. I learn by shipping real projects.",
+    "Fourth-year Computer Science student who enjoys learning, working with others, and taking on new challenges. I am a curious, dependable, and determined person who values growth, continuous improvement, and meaningful contributions.",
   email: "arianneevasco@gmail.com",
   location: "Irosin, Sorsogon, Philippines. Open to remote",
   cv: "/arianne-evasco-cv.pdf",
