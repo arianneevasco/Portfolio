@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, Code2, ExternalLink, Lock } from "lucide-react";
+import { ChevronLeft, ChevronRight, Code2, Download, ExternalLink, Lock } from "lucide-react";
 import { projects as localProjects } from "../data/content";
 import { supabase } from "../lib/supabaseClient";
 
@@ -43,7 +43,8 @@ export default function Projects() {
             ...project,
             type: project.role,
             image: project.image_url || localProject?.image,
-            live: project.live_url,
+            platform: project.platform || localProject?.platform,
+            live: project.live_url || localProject?.live,
             code: project.code_url,
           };
         }));
@@ -105,7 +106,7 @@ export default function Projects() {
                       ))}
                     </ul>
                     <div className="project__links">
-                      {p.live && <a className="btn btn--solid" href={p.live} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}><ExternalLink size={16} /> Live Demo</a>}
+                      {p.live && <a className="btn btn--solid" href={p.live} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>{p.platform === "mobile" ? <Download size={16} /> : <ExternalLink size={16} />} {p.platform === "mobile" ? "Download App" : "Live Demo"}</a>}
                       {p.code && <a className="btn btn--ghost" href={p.code} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}><Code2 size={16} /> GitHub</a>}
                       {p.note && <span className="tag"><Lock size={13} /> {p.note}</span>}
                     </div>
